@@ -22,7 +22,7 @@ export async function middleware(req: NextRequest) {
     // verify the token
     try {
         await jwtVerify(token, SECERT_KEY);
-        console.log('Token is valid, proceeding to next response');
+        console.log('Token is valid, proceeding to next response'); //for debugging
         return NextResponse.next();
     } catch (error) {
         console.error('Invalid token:', error);

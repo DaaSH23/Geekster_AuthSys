@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import Logo from "../app/assests/Logo.svg";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState, Suspense, useRef } from "react";
 import { useAuth } from "@/context/AuthContext";
 import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "react-toastify";
 
-export default function Home() {
+function HomeContent() {
 
   //for state mangement through contextAPI
   const { login, isAuthenticated } = useAuth();
@@ -26,12 +26,19 @@ export default function Home() {
     password: '',
   });
 
+  // ref to track if the effect has already run
+  const effectRan = useRef(false);
+
   // checking if the user is trying to access unauthorised routes
   useEffect(() => {
+    if (effectRan.current) return;
+
     const AuthMsg = searchParams.get('auth');
     if (AuthMsg === 'N') {
-      toast.warning('Please Login !')
+      toast.warning('Please Login!');
     }
+
+    effectRan.current = true;
   }, [searchParams]);
 
   // Handling the changes of the form
@@ -158,5 +165,13 @@ export default function Home() {
         </form>
       </div>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <HomeContent />
+    </Suspense>
   );
 }
