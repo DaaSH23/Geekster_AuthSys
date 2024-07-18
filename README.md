@@ -38,7 +38,7 @@ This will install all necessary dependencies for the Next.js application.
 3. Update the above enviornment variable credentials as pre your need,
    
 
-First, run the development server:
+### Run the development server:
 
 ```bash
 npm run dev
