@@ -16,8 +16,9 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
   git clone https://github.com/DaaSH23/Geekster_AuthSys.git
 ```
 5. Navigate into the project directory:
+```bash
    cd Geekster_AuthSys
-
+```
 ### Installing Dependencies
 
 In the project root directory, run:
