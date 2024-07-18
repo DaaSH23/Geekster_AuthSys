@@ -2,6 +2,41 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+### Prerequisites
+- Node.js (preferably the latest LTS version)
+- npm (comes with Node.js)
+- Git
+
+### Cloning the Repository
+
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you want to clone the project.
+3. Run the following command:
+```bash
+  git clone https://github.com/DaaSH23/Geekster_AuthSys.git
+```
+5. Navigate into the project directory:
+   cd Geekster_AuthSys
+
+### Installing Dependencies
+
+In the project root directory, run:
+```bash
+  npm install
+```
+This will install all necessary dependencies for the Next.js application.
+
+### Configuration
+
+1. In the root directory, create a `.env` file based on the `.env.example` file (if it don't exists).
+```bash
+  LOGIN_EMAIL=user@example.com
+  LOGIN_PASSWORD=secure@12345PASS
+  JWT_SECRET=THISISMYSECUREJWTSECRET
+```
+3. Update the above enviornment variable credentials as pre your need,
+   
+
 First, run the development server:
 
 ```bash
