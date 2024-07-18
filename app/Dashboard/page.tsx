@@ -70,10 +70,10 @@ export default function Dashboard() {
                             Search....
                         </label>
                         <input
-                            id="email"
-                            name="email"
-                            type="email"
-                            autoComplete="email"
+                            id="search"
+                            name="search"
+                            type="text"
+                            autoComplete="search"
                             required
                             placeholder="Search...."
                             className="w-full rounded-md border border-input px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm text-Dbalck bg-BBgg"
