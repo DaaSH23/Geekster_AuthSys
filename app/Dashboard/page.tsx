@@ -12,6 +12,7 @@ import Pic6 from "../assests/BtPPYjDTHl1g9AeEfSjW1694602011806.webp"
 import Icon1 from "../assests/yellow-line.svg"
 import { useAuth } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
+import picBanner from "../assests/IntroductiontoFullStackWebDevelopment.webp"
 import "../Dashboard/dashboard.css";
 
 export default function Dashboard() {
@@ -150,7 +151,7 @@ export default function Dashboard() {
                         <div className="space-y-4 lg:ml-10 text-center lg:text-left">
                             <div className="font-bold lg:flex">
                                 <div>
-                                    <span className="text-LGreen text-5xl">India's 1st</span>
+                                    <span className="text-LGreen text-5xl">India&apos;s 1st</span>
                                     <div className="mt-2 flex justify-center lg:justify-start w-full">
                                         <Image src={Icon1} alt="Logo" width={240} height={150} className="rounded-xl" />
                                     </div>
@@ -171,8 +172,8 @@ export default function Dashboard() {
 
                         <div className="relative aspect-w-16 aspect-h-9 mb-4">
                             <a href="">
-                                <img
-                                    src="https://images.geekster.in/courses/home/IntroductiontoFullStackWebDevelopment.webp"
+                                <Image
+                                    src={picBanner}
                                     alt="Banner"
                                     className="w-full h-full object-cover rounded-xl"
                                 />
