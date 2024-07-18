@@ -76,7 +76,7 @@ export default function Dashboard() {
                             autoComplete="search"
                             required
                             placeholder="Search...."
-                            className="w-full rounded-md border border-input px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm text-Dbalck bg-BBgg"
+                            className="w-full rounded-md   px-3 py-2 shadow-sm sm:text-sm bg-BBgg"
                         />
                     </div>
                     <div className="flex items-end ml-4">
