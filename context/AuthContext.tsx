@@ -3,15 +3,17 @@
 import React, {createContext, useContext, useState, ReactNode} from "react";
 import { toast } from "react-toastify";
 
-
+// Interface for Context
 type AuthContextType = {
     isAuthenticated: boolean;
     login: () => void;
     logout: () => void;
 };
 
+//Creating the context
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+//creating the provider
 export const AuthProvider = ({children}: {children: ReactNode}) =>{
     const [isAuthenticated, setIsAuthenticated] = useState(false);
 
@@ -30,6 +32,7 @@ export const AuthProvider = ({children}: {children: ReactNode}) =>{
     );
 };
 
+// custom hook
 export const useAuth = () => {
     const context = useContext(AuthContext);
     if(context === undefined){

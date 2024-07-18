@@ -17,12 +17,12 @@ export default function Home() {
   const searchParams = useSearchParams();
   //form data
   const [formData, setFromData] = useState({
-    email: '',
+    username: '',
     password: '',
   })
   //error data
   const [errors, setErrors] = useState({
-    email: '',
+    username: '',
     password: '',
   });
 
@@ -49,25 +49,34 @@ export default function Home() {
 
   // checks the form validation
   const validateForm = () => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const usernameRegex = /^[a-zA-Z0-9]+$/; // Allows only letters and numbers
     const newErrors = {
-      email: '',
+      username: '',
       password: '',
     };
     let isValid = true;
-
-    if (!emailRegex.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+  
+    if (formData.username.trim() === '') {
+      newErrors.username = 'Username is required';
+      isValid = false;
+    } else if (formData.username.length < 3) {
+      newErrors.username = 'Username must be at least 3 characters long';
+      isValid = false;
+    } else if (!usernameRegex.test(formData.username)) {
+      newErrors.username = 'Username must not contain special characters';
       isValid = false;
     }
+  
     if (formData.password.length < 6) {
       newErrors.password = 'Password must be at least 6 characters long';
       isValid = false;
     }
+  
     setErrors(newErrors);
     return isValid;
   };
 
+  //Handles form submit
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -79,7 +88,7 @@ export default function Home() {
     const response = await fetch('/api/Login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: formData.email, password: formData.password })
+      body: JSON.stringify({ username: formData.username, password: formData.password })
     })
 
     if (response.ok) {
@@ -105,20 +114,20 @@ export default function Home() {
         <form className="space-y-6" onSubmit={handleSubmit} action="#" method="POST">
           <div>
             <label htmlFor="email" className="sr-only">
-              Email address
+              Username
             </label>
             <input
-              id="email"
-              name="email"
-              type="email"
-              autoComplete="email"
+              id="username"
+              name="username"
+              type="text"
+              autoComplete="username"
               required
-              placeholder="Email address"
-              value={formData.email}
+              placeholder="Username"
+              value={formData.username}
               onChange={handleChange}
               className="w-full rounded-md border border-input px-3 py-2 shadow-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary sm:text-sm text-Dbalck"
             />
-            {errors.email && <p className="mt-2 text-sm text-redd">{errors.email}</p>}
+            {errors.username && <p className="mt-2 text-sm text-redd">{errors.username}</p>}
           </div>
 
           <div>

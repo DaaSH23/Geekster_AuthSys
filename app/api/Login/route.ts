@@ -11,21 +11,23 @@ export async function POST(req: Request) {
     // console.log('Request body:', req.body);
 
     try {
-        const { email, password } = await req.json();
+        const { username, password } = await req.json();
 
-        //check if the email is password is missing or not
-        if (!email || !password || !process.env.JWT_SECRET) {
-            console.error('Email or Password not found !')
+        console.log(username, password);
+
+        //check if the username is password is missing or not
+        if (!username || !password || !process.env.JWT_SECRET) {
+            console.error('username or Password not found !')
             return NextResponse.json({
                 message: 'Server config error, variable missing'
             }, { status: 500 })
         }
         
         //check the credentials 
-        if (email === process.env.LOGIN_EMAIL && password === process.env.LOGIN_PASSWORD) {
+        if (username === process.env.LOGIN_USERNAME && password === process.env.LOGIN_PASSWORD) {
 
             //creating the token
-            const token = await new SignJWT({ email })
+            const token = await new SignJWT({ username })
                 .setProtectedHeader({ alg: 'HS256' })
                 .setExpirationTime('1h')
                 .sign(SECRET_KEY);
@@ -44,7 +46,7 @@ export async function POST(req: Request) {
             return response
 
         } else {
-            return NextResponse.json({ message: 'Incorrect Password or Email' }, { status: 401 });
+            return NextResponse.json({ message: 'Incorrect Password or username' }, { status: 401 });
         }
     } catch (error) {
         console.error('Login error:', error);
